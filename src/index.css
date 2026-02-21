@@ -1,0 +1,42 @@
+@import "tailwindcss";
+
+
+@layer theme {
+    :root {
+        --color-bg-primary: #fff;
+        --color-bg-secondary: #f0f0f0;
+        --color-accent: #155dfc;
+        --color-accent-hov: #1447e6;
+        --color-text-primary: #000;
+        --color-text-accent: #fff;
+        --color-bg-attention: #e81717;
+    }
+
+    .dark {
+        --color-bg-primary: oklch(26.9% 0 0);
+        --color-bg-secondary: oklch(36.002% 0.00004 271.152);
+        --color-accent: #155dfc;
+        --color-accent-hov: #1540c0;
+        --color-text-primary: #fff;
+        --color-text-accent: #000;
+    }
+
+}
+
+@theme {
+    --color-theme-background: var(--color-bg-primary);
+    --color-theme-background-secondary: var(--color-bg-secondary);
+    --color-theme-text-primary: var(--color-text-primary);
+    --color-theme-accent: var(--color-accent);
+    --color-theme-accent-hov: var(--color-accent-hov);
+    --color-theme-text-accent: var(--color-text-accent);
+    --color-theme-attention: var(--color-bg-attention);
+    --color-theme-attention-hov: var(--color-bg-attention);
+}
+
+/* Normalize */
+/* 
+a, p, div, button, input {
+    color: var(--color-theme-text-primary);
+} */
+

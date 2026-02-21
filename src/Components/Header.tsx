@@ -1,0 +1,60 @@
+import { Link } from "@tanstack/react-router"
+import { useAuthStore } from "../store/authStore"
+import { useCurrentUser } from "../hooks/useCurrentUser"
+
+import Button from "./Button"
+import ThemeToggle from "./ThemeToggle"
+
+const Header = () => {
+
+  const { isAuthenticated, logout } = useAuthStore()
+  const { data: user, isLoading } = useCurrentUser()
+
+  return (
+    <header className="px-20 py-3 flex justify-between bg-theme-background shadow-xl/30">
+      <Link to="/" className="text-2xl font-bold text-theme-text-primary transition-all duration-150 hover:scale-105">Kitsu API</Link>
+
+      <div className="flex gap-4 items-center">
+        {isAuthenticated ? (
+          <div className="flex items-center gap-3">
+            {isLoading ? (
+              <span className="text-theme-text-primary">loading...</span>
+            ) : (
+              <>
+                <span className="font-bold text-theme-text-primary">{user?.attributes?.name}</span>
+                <img 
+                  src={user?.attributes?.avatar?.tiny} 
+                  alt="Avatar" 
+                  className="w-10 h-10 rounded-full border-2 border-green-500"
+                />
+              </>
+            )}
+
+            <Button 
+              onClick={() => { logout(); window.location.reload(); }}
+              className="px-3 py-1 rounded cursor-pointer"
+              color='attention'
+              >
+                Выйти
+            </Button>
+          </div>
+        ) : (
+          // ЕСЛИ НЕТ
+          <div className="flex gap-2">
+            <Link to="/login" className="px-4 py-2 bg-theme-accent hover:bg-theme-accent-hov rounded transition-all duration-150 hover:scale-105 text-white">
+              Log In
+            </Link>
+            <Link to="/register" className="px-4 py-2 text-theme-text-primary transition-all duration-150 hover:scale-105">
+              Register
+            </Link>
+          </div>
+        )}
+        <ThemeToggle/>
+
+      </div>
+      
+    </header>
+  )
+}
+
+export default Header
