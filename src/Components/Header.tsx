@@ -32,10 +32,10 @@ const Header = () => {
 
             <Button 
               onClick={() => { logout(); window.location.reload(); }}
-              className="px-3 py-1 rounded cursor-pointer"
+              className="px-3 py-1 rounded cursor-pointer text-white"
               color='attention'
               >
-                Выйти
+                Exit
             </Button>
           </div>
         ) : (

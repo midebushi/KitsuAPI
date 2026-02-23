@@ -22,7 +22,7 @@ const Button: React.FC<ButtonType> = ({ children, color = 'accent', className = 
 
   return (
     <button 
-      className={`${className} ${colorClass} flex items-center justify-center px-4 py-2 rounded transition-all duration-150 hover:scale-105`} 
+      className={`${className} ${colorClass} flex items-center justify-center px-4 py-2 rounded transition-all duration-150 hover:scale-105 disabled:opacity-75 disabled:cursor-not-allowed`} 
       onClick={onClick}
       type={type}
       disabled={loading}
