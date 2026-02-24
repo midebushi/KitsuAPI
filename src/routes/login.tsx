@@ -5,7 +5,7 @@ import { LoginSchema, type LoginFormValues } from '../lib/validation'
 import { useLoginMutation } from '../hooks/useAuthMutations'
 import { Link } from '@tanstack/react-router'
 
-import Button from '../Components/Button'
+import Button from '../Components/Buttons/Button'
 import Input from '../Components/Input'
 
 export const Route = createFileRoute('/login')({

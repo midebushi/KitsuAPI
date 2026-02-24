@@ -3,7 +3,7 @@ import { useThemeStore } from "../store/themeStore"
 import { MdSunny } from "react-icons/md";
 import { FaMoon } from "react-icons/fa6";
 
-import Button from "./Button"
+import Button from "./Buttons/Button"
 
 const ThemeToggle = () => {
     const { toggleTheme, theme } = useThemeStore()

@@ -1,7 +1,7 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { useQuery } from '@tanstack/react-query'
-import { AiOutlineLoading } from 'react-icons/ai'
 import { useState } from 'react'
+import Skeleton from '../../Components/Skeleton'
 
 
 export const Route = createFileRoute('/anime/$animeId')({
@@ -26,7 +26,7 @@ function RouteComponent() {
 
   if (isLoading) {
     return (
-      <AiOutlineLoading className='text-theme-text-primary animate-spin' />
+      <Skeleton className='w-[1504px] h-[340px]'></Skeleton>
     )
   }
 
