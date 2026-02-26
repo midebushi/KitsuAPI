@@ -12,7 +12,7 @@ export interface Manga {
 }
 
 export const fetchTrendingManga = async (): Promise<Manga[]> => {
-    const res = await fetch('https://kitsu.io/api/edge/manga?sort=-userCount&page[limit]=10', {
+    const res = await fetch('https://kitsu.io/api/edge/manga?sort=-userCount&page[limit]=20', {
         headers: {
             'Content-type': 'application/vnd.api+json',
         },

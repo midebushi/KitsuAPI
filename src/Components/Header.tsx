@@ -15,7 +15,7 @@ const Header = () => {
   const { data: user, isLoading } = useCurrentUser()
 
   return (
-    <header className="px-20 py-3 flex justify-between bg-theme-background shadow-xl/30">
+    <header className="px-20 py-3 flex justify-between bg-theme-background shadow-xl/30 z-20">
       <Link to="/" className="text-2xl font-bold text-theme-text-primary transition-all duration-150 hover:scale-105">Kitsu API</Link>
       <div className="flex gap-4 items-center">
         <div className="relative w-full max-w-sm">
@@ -56,7 +56,7 @@ const Header = () => {
         ) : (
           // ЕСЛИ НЕТ
           <div className="flex gap-2">
-            <Link to="/login" className="px-4 py-2 bg-theme-accent hover:bg-theme-accent-hov rounded transition-all duration-150 hover:scale-105 text-white">
+            <Link to="/login" className="px-4 py-2 text-nowrap bg-theme-accent hover:bg-theme-accent-hov rounded transition-all duration-150 hover:scale-105 text-white">
               Log In
             </Link>
             <Link to="/register" className="px-4 py-2 text-theme-text-primary transition-all duration-150 hover:scale-105">

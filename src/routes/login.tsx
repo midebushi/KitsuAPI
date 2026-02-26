@@ -1,15 +1,26 @@
-import { createFileRoute } from '@tanstack/react-router'
+import { createFileRoute, redirect } from '@tanstack/react-router'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { LoginSchema, type LoginFormValues } from '../lib/validation'
 import { useLoginMutation } from '../hooks/useAuthMutations'
 import { Link } from '@tanstack/react-router'
+import { useAuthStore } from '../store/authStore'
 
 import Button from '../Components/Buttons/Button'
 import Input from '../Components/Input'
 
 export const Route = createFileRoute('/login')({
   component: RouteComponent,
+  beforeLoad: () => {
+    const { isAuthenticated } = useAuthStore.getState()
+
+    if (isAuthenticated) {
+      throw redirect({
+        to: '/',
+        replace: true,
+      })
+    }
+  }
 })
 
 function RouteComponent() {

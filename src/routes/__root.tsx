@@ -14,7 +14,7 @@ function RootComponent() {
     <React.Fragment>
         <div className='flex flex-col min-h-screen bg-theme-background-secondary'>
           <Header/>
-          <main className='flex-1 bg-theme-background-secondary flex items-center px-20'>
+          <main className='flex-1 bg-theme-background-secondary flex items-'>
             <Outlet />
           </main>
           <Footer/>

@@ -15,15 +15,15 @@ export const useAuthStore = create<AuthState>()(
       (set) => ({
         accessToken: null,
         refreshToken: null,
-        isAuthenticated: true,
+        isAuthenticated: false,
         setTokens: (access, refresh) => 
           set({ accessToken: access, refreshToken: refresh, isAuthenticated: true }),
         logout: () => 
           set({ accessToken: null, refreshToken: null, isAuthenticated: false }),
       }),
       {
-        name: 'kitsu-auth-storage', // имя ключа в localStorage
-        storage: createJSONStorage(() => localStorage), // явно указываем, что храним в localStorage
+        name: 'kitsu-auth-storage',
+        storage: createJSONStorage(() => localStorage),
       }
     )
   )

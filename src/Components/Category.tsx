@@ -43,7 +43,7 @@ const Category = <T,>({
     }
     
   return (
-    <div className="flex flex-col gap-5 w-full relative group">
+    <div className="flex flex-col gap-5 w-full relative group px-5">
         <div className="flex justify-between">
             <Link className='text-theme-text-primary text-2xl font-bold size-fit' to={link as any}>{title}</Link>
             <Link className="text-theme-text-primary opacity-50 hover:underline" to={link as any}>Show more</Link>

@@ -10,6 +10,7 @@
         --color-text-primary: #000;
         --color-text-accent: #fff;
         --color-bg-attention: #e81717;
+        --color-text-secondary: #d1d1d1;
     }
 
     .dark {
@@ -32,6 +33,7 @@
     --color-theme-text-accent: var(--color-text-accent);
     --color-theme-attention: var(--color-bg-attention);
     --color-theme-attention-hov: var(--color-bg-attention);
+    --color-theme-text-secondary: var(--color-text-secondary);
 }
 
 /* Normalize */
