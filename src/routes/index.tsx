@@ -1,9 +1,12 @@
 import { createFileRoute, Link } from '@tanstack/react-router'
 import Category from '../Components/Category'
 import Card from '../Components/Card'
-import { useTrendingAnime } from '../hooks/useAnime'
+import { useAnimeQuery } from '../hooks/useAnime'
 import Skeleton from '../Components/Skeleton'
-import { useTrendingManga } from '../hooks/useManga'
+import { useMangaQuery } from '../hooks/useManga'
+
+import { type Anime } from '../api/anime'
+import { type Manga } from '../api/manga'
 
 export const Route = createFileRoute('/')({
   component: RouteComponent,
@@ -11,39 +14,43 @@ export const Route = createFileRoute('/')({
 
 function RouteComponent() {
 
-  const animeQuery = useTrendingAnime()
-  const mangaQuery = useTrendingManga()
+  const animeQuery = useAnimeQuery()
+  const mangaQuery = useMangaQuery()
+
+  const firstPageAnime = animeQuery.data?.pages?.[0] || []
+  const firstPageManga = mangaQuery.data?.pages?.[0] || []
+
 
   return <div className='m-auto size-fit overflow-x-hidden w-425'>
     <div>
       <Category
         link='/anime'
         title='Trending Anime'
-        data={animeQuery.data}
+        data={firstPageAnime}
         isLoading={animeQuery.isLoading}
         isError={animeQuery.isError}
         error={animeQuery.error}
-        renderItem={(item) => (
+        renderItem={(item: Anime) => (
           <Link to='/anime/$animeId' params={{ animeId: item.id }}>
             <Card item={item} />
           </Link>
         )}
-        renderSkeleton={() => <Skeleton className='w-[192px] h-[252px]' />}
+        renderSkeleton={() => <Skeleton className='min-w-[192px] h-[252px]' />}
         skeletonCount={8}
       />
       <Category
         link='/manga'
         title='Manga'
-        data={mangaQuery.data}
+        data={firstPageManga}
         isLoading={mangaQuery.isLoading}
         isError={mangaQuery.isError}
         error={mangaQuery.error}
-        renderItem={(item) => (
+        renderItem={(item: Manga) => (
           <Link to='/manga/$mangaId' params={{ mangaId: item.id}}>
             <Card item={item} />
           </Link>
         )}
-        renderSkeleton={() => <Skeleton className='w-[192px] h-[252px]' />}
+        renderSkeleton={() => <Skeleton className='min-w-[192px] h-[252px]' />}
         skeletonCount={8}
       />
     </div>

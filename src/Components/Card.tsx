@@ -2,7 +2,7 @@ import { FaStar } from "react-icons/fa";
 
 const Card = ({ item }: { item: any }) => {
   return (
-    <li className="snap-start shrink-0 px-2">
+    <li className="snap-start shrink-0 px-2 my-3">
       <div className="rounded-xl overflow-hidden shadow-lg hover:scale-105 transition-transform cursor-pointer w-48 bg-theme-background">
         <img 
           src={item.attributes.posterImage?.small} 

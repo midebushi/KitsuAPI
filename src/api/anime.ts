@@ -11,8 +11,22 @@ export interface Anime {
     },
 }
 
-export const fetchTrendingAnime = async (): Promise<Anime[]> => {
-    const res = await fetch('https://kitsu.io/api/edge/anime?sort=-userCount&page[limit]=20', {
+interface fetchAnimeParams {
+    limit?: number,
+    pageParam?: number,
+    searchQuery?: string,
+}
+
+export const fetchTrendingAnime = async ({ limit = 20, pageParam = 0, searchQuery = '' }: fetchAnimeParams): Promise<Anime[]> => {
+    let url = `https://kitsu.io/api/edge/anime?sort=-userCount&page[limit]=${limit}&page[offset]=${pageParam}`
+
+    if (searchQuery) {
+        url += `&filter[text]=${encodeURIComponent(searchQuery)}`
+    } else {
+        url += `$sort=-userCount`
+    }
+
+    const res = await fetch(url, {
         headers: {
             'Content-type': 'application/vnd.api+json',
         },
@@ -23,6 +37,5 @@ export const fetchTrendingAnime = async (): Promise<Anime[]> => {
     }
 
     const json = await res.json()
-
     return json.data
 }   
