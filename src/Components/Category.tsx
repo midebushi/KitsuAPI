@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router"
-import React, { useRef } from "react"
+import { useRef } from "react";
+import * as React from "react";
 import { type FileRoutesByTo } from "../routeTree.gen"
 import { AiOutlineLeft, AiOutlineRight } from 'react-icons/ai'
 import SliderButton from "./Buttons/SliderButton"
