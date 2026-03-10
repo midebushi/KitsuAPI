@@ -1,5 +1,3 @@
-import React from 'react'
-
 const Sidebar = () => {
   return (
     <aside className='w-full lg:w-80 shrink-0 p-4 rounded-xl flex-1 bg-theme-background'>
