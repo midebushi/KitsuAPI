@@ -42,3 +42,7 @@ a, p, div, button, input {
     color: var(--color-theme-text-primary);
 } */
 
+body {
+    overflow-x: hidden;
+}
+

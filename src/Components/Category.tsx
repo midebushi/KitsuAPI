@@ -43,7 +43,7 @@ const Category = <T,>({
     }
     
   return (
-    <div className="flex flex-col gap-5 w-full relative group px-5">
+    <div className="flex flex-col gap-5 w-full relative group">
         <div className="flex justify-between">
             <Link className='text-theme-text-primary text-2xl font-bold size-fit' to={link as any}>{title}</Link>
             <Link className="text-theme-text-primary opacity-50 hover:underline" to={link as any}>Show more</Link>
@@ -52,7 +52,7 @@ const Category = <T,>({
             <SliderButton onClick={() => scroll('left')} direction="left">
                 <AiOutlineLeft className="text-xl" />
             </SliderButton>
-            <ul className="flex gap-2 w-full p-2 pb-7 overflow-x-auto scroll-smooth snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" ref={scrollRef}>
+            <ul className="flex gap-2 w-full pb-7 overflow-x-auto scroll-smooth snap-x snap-mandatory [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" ref={scrollRef}>
                 {isLoading && 
                     Array.from({ length: skeletonCount || 10}).map((_, index) => (
                         <React.Fragment key={index}>
@@ -61,7 +61,6 @@ const Category = <T,>({
                     ))
                 }
                 {isError && <p className='text-theme-attention'>Error: {error?.message}</p>}
-                {(!data || data.length) === 0 && <p>Not found</p>}
 
                 {data?.map((item, index) => (
                     <React.Fragment key={index}>
